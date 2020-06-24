@@ -1,0 +1,181 @@
+
+Hanene@Hanene-PC MINGW64 ~ (master)
+$ cs E:/
+bash: cs: command not found
+
+Hanene@Hanene-PC MINGW64 ~ (master)
+$ cd E:/
+
+Hanene@Hanene-PC MINGW64 /e
+$ mkdir learn_git_again
+
+Hanene@Hanene-PC MINGW64 /e
+$ cd E:/learn_git_again
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again
+$ touch third.txt
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again
+$ git init
+Initialized empty Git repository in E:/learn_git_again/.git/
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)
+$ git add third.txt
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)
+$ git commit -m "adding third.txt"
+[master (root-commit) c4986f7] adding third.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 third.txt
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)
+$ git log
+commit c4986f7e8a3acda04be210447786b1123417e175 (HEAD -> master)
+Author: hanene <ba.hanene.96@gmail.com>
+Date:   Wed Jun 24 22:16:51 2020 +0200
+
+    adding third.txt
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)
+$ touch fourth.txt
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)
+$ git add fourth.txt
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)
+$ add commit -m "adding fourth.txt"
+bash: add: command not found
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)
+$ git commit -m " adding fourth.txt"
+[master c5b9099]  adding fourth.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 fourth.txt
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)  # git rm will remove it from both your staging area, as well as your file system 
+$ git rm -r third.txt
+rm 'third.txt'
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master) # pour vérifier 
+$ cat third.txt
+cat: third.txt: No such file or directory
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)
+$ git add -u
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)
+$ add commit -m "removing third.txt"
+bash: add: command not found
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)
+$ git commit -m " removing third.txt"
+[master 85d86b1]  removing third.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 third.txt
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)
+$ git log
+commit 85d86b1cffb9c174626e36427636b7d6a06c485d (HEAD -> master)
+Author: hanene <ba.hanene.96@gmail.com>
+Date:   Wed Jun 24 22:29:33 2020 +0200
+
+     removing third.txt
+
+commit c5b909908fb20eb3109cc2655788187a6ac1232b
+Author: hanene <ba.hanene.96@gmail.com>
+Date:   Wed Jun 24 22:18:38 2020 +0200
+
+     adding fourth.txt
+
+commit c4986f7e8a3acda04be210447786b1123417e175
+Author: hanene <ba.hanene.96@gmail.com>
+Date:   Wed Jun 24 22:16:51 2020 +0200
+
+    adding third.txt
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)
+$  git config --global core.pager=cat
+error: invalid key: core.pager=cat
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)
+$ git config --global core.pager "cat"
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)
+$ ls
+fourth.txt
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master) 
+$ git config --list
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=openssl
+http.sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager
+user.name=hanene
+user.email=ba.hanene.96@gmail.com
+core.pager=cat
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)
+$ git config -- global
+error: key does not contain a section: global
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)
+$ git config --global
+usage: git config [<options>]
+
+Config file location
+    --global              use global config file
+    --system              use system config file
+    --local               use repository config file
+    --worktree            use per-worktree config file
+    -f, --file <file>     use given config file
+    --blob <blob-id>      read config from given blob object
+
+Action
+    --get                 get value: name [value-regex]
+    --get-all             get all values: key [value-regex]
+    --get-regexp          get values for regexp: name-regex [value-regex]
+    --get-urlmatch        get value specific for the URL: section[.var] URL
+    --replace-all         replace all matching variables: name value [value_regex]
+    --add                 add a new variable: name value
+    --unset               remove a variable: name [value-regex]
+    --unset-all           remove all matches: name [value-regex]
+    --rename-section      rename section: old-name new-name
+    --remove-section      remove a section: name
+    -l, --list            list all
+    -e, --edit            open an editor
+    --get-color           find the color configured: slot [default]
+    --get-colorbool       find the color setting: slot [stdout-is-tty]
+
+Type
+    -t, --type <>         value is given this type
+    --bool                value is "true" or "false"
+    --int                 value is decimal number
+    --bool-or-int         value is --bool or --int
+    --path                value is a path (file or directory name)
+    --expiry-date         value is an expiry date
+
+Other
+    -z, --null            terminate values with NUL byte
+    --name-only           show variable names only
+    --includes            respect include directives on lookup
+    --show-origin         show origin of config (file, standard input, blob, command line)
+    --show-scope          show scope of config (worktree, local, global, system, command)
+    --default <value>     with --get, use default value when missing entry
+
+
+Hanene@Hanene-PC MINGW64 /e/learn_git_again (master)
+$
